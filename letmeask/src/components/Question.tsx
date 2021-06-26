@@ -1,6 +1,5 @@
-
-import { ReactNode } from 'react';
-import '../styles/question.scss'
+import { ReactNode } from "react";
+import "../styles/question.scss";
 
 type QuestionProps = {
   content: string;
@@ -8,21 +7,33 @@ type QuestionProps = {
     name: string;
     avatar: string;
   };
-  children?: ReactNode
+  children?: ReactNode;
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
 };
 
-export function Question({ content, author, children }: QuestionProps) {
+export function Question({
+  content,
+  author,
+  children,
+  isAnswered = false,
+  isHighlighted = false,
+}: QuestionProps) {
+  console.log(isHighlighted)
   return (
-    <div className="question">
+    <div
+      className={`question ${isAnswered ? "answered" : ""} 
+      ${
+        isHighlighted  ? "highlighted" : ""
+      }`}
+    >
       <p>{content}</p>
       <footer>
         <div className="user-info">
           <img src={author.avatar} alt={author.name} />
           <span>{author.name}</span>
         </div>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </footer>
     </div>
   );
