@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import "../styles.scss";
+import "./styles.scss";
 
 type QuestionProps = {
   content: string;
@@ -19,13 +19,11 @@ export function Question({
   isAnswered = false,
   isHighlighted = false,
 }: QuestionProps) {
-  console.log(isHighlighted)
+  console.log(isHighlighted);
   return (
     <div
       className={`question ${isAnswered ? "answered" : ""} 
-      ${
-        isHighlighted  ? "highlighted" : ""
-      }`}
+      ${isHighlighted ? "highlighted" : ""}`}
     >
       <p>{content}</p>
       <footer>
